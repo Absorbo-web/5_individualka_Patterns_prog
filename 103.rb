@@ -47,18 +47,25 @@ def unucum(ostatokList)
   (1...ostatokList.size).each do |i|
     return FALSE if ostatokList[i - 1] == ostatokList[i]
   end
-  TRUE
+  return TRUE
 end
 # составляет всевозможные комбинации чисел
 
 def creater(ostatokList)
   temp_ostatok = Array.new(ostatokList)
   $checkBool = TRUE
+  print ostatokList
+  summm = temp_ostatok.inject(0) { |result, elem| result + elem }
+  print summm
   if unucum(temp_ostatok)
-    print temp_ostatok
-    puts
+    # print temp_ostatok
+    # puts
     delete_item(temp_ostatok)
-    print temp_ostatok if $checkBool
+    summm = temp_ostatok.inject(0) { |result, elem| result + elem }
+    if summm < $minSumm and $checkBool
+      print summm
+      print temp_ostatok
+    end
   end
   i = temp_ostatok.length - 1
   while i >= 0 do
@@ -80,14 +87,14 @@ def lol(i,ostatokList)
       temp2[i] += 1
       temp3 = Array.new(temp2)
       lol(i,temp3)
-      print temp2
-      puts
+      # print temp2
+      # puts
     end
   else
     (ostatokList[i]...30).each do
       ostatokList[i] += 1
-      print ostatokList
-      puts
+      # print ostatokList
+      # puts
     end
   end
 end
