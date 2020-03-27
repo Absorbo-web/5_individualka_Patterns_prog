@@ -87,14 +87,50 @@ def lol(i,ostatokList)
       temp2[i] += 1
       temp3 = Array.new(temp2)
       lol(i,temp3)
-      # print temp2
-      # puts
+
+
+      $checkBool = TRUE
+      summm = ostatokList.inject(0) { |result, elem| result + elem }
+      # print summm
+      if unucum(ostatokList)
+        # print ostatokList
+        # puts
+        delete_item(ostatokList)
+        summm = ostatokList.inject(0) { |result, elem| result + elem }
+        if summm < $minSumm and $checkBool
+          $minSumm = summm
+          print $minSumm
+          print summm
+          print ostatokList
+        end
+      end
+
+
+
     end
   else
     (ostatokList[i]...30).each do
       ostatokList[i] += 1
       # print ostatokList
       # puts
+
+      $checkBool = TRUE
+      summm = ostatokList.inject(0) { |result, elem| result + elem }
+      # print summm
+      if unucum(ostatokList)
+        # print ostatokList
+        # puts
+        delete_item(ostatokList)
+        summm = ostatokList.inject(0) { |result, elem| result + elem }
+        if summm < $minSumm and $checkBool
+          $minSumm = summm
+          print $minSumm
+          print summm
+          print ostatokList
+        end
+      end
+
+
     end
   end
 end
